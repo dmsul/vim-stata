@@ -11,6 +11,7 @@
 " 17apr2006	fixed start expression for stataFunc
 " 26apr2006	fixed brace confusion in stataErrInParen and stataErrInBracket
 "		fixed paren/bracket confusion in stataFuncGroup
+" 1oct2014      added a few commands, todo
 
 if version < 600
 	syntax clear
@@ -20,13 +21,17 @@ endif
 
 syntax case match
 
+" todo markers
+" taken from $VIMRUNTIME/syntax/python.vim 
+syn keyword stataTodo		FIXME NOTE NOTES TODO XXX contained
+
 " comments - single line
 " note that the triple slash continuing line comment comes free
-syn region stataStarComment  start=/^\s*\*/ end=/$/    contains=stataComment oneline
-syn region stataSlashComment start="\s//"   end=/$/    contains=stataComment oneline
-syn region stataSlashComment start="^//"    end=/$/    contains=stataComment oneline
+syn region stataStarComment  start=/^\s*\*/ end=/$/    contains=stataComment,stataTodo oneline
+syn region stataSlashComment start="\s//"   end=/$/    contains=stataComment,stataTodo oneline
+syn region stataSlashComment start="^//"    end=/$/    contains=stataComment,stataTodo oneline
 " comments - multiple line
-syn region stataComment      start="/\*"    end="\*/"  contains=stataComment
+syn region stataComment      start="/\*"    end="\*/"  contains=stataComment,stataTodo
 
 " global macros - simple case
 syn match  stataGlobal /\$\a\w*/
@@ -448,6 +453,7 @@ hi def link stataMacro		Define
 hi def link stataRepeat		Repeat
 hi def link stataSpecial	SpecialChar
 hi def link stataString		String
+hi def link stataTodo		Todo
 
 let b:current_syntax = "stata"
 
