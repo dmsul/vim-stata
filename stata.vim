@@ -54,7 +54,7 @@ syn keyword stataCommand adopath
 syn keyword stataCommand adoupdate
 syn keyword stataCommand assert
 syn keyword stataCommand break
-syn keyword stataCommand by
+syn keyword stataCommand by[sort]
 syn keyword stataCommand cap[ture]
 syn keyword stataCommand cd
 syn keyword stataCommand chdir
@@ -77,11 +77,12 @@ syn keyword stataCommand do
 syn keyword stataCommand doedit
 syn keyword stataCommand drop
 syn keyword stataCommand edit
+syn keyword stataCommand egen
 syn keyword stataCommand end
 syn keyword stataCommand erase
 syn keyword stataCommand eret[urn]
 syn keyword stataCommand err[or]
-syn keyword stataCommand e[xit]
+syn keyword stataCommand ex[it]
 syn keyword stataCommand expand
 syn keyword stataCommand expandcl
 syn keyword stataCommand file
@@ -98,6 +99,7 @@ syn keyword stataCommand infix
 syn keyword stataCommand input
 syn keyword stataCommand insheet
 syn keyword stataCommand joinby
+syn keyword stataCommand keep
 syn keyword stataCommand la[bel]
 syn keyword stataCommand levelsof
 syn keyword stataCommand list
@@ -135,7 +137,7 @@ syn keyword stataCommand q[uery]
 syn keyword stataCommand qui[etly]
 syn keyword stataCommand rcof
 syn keyword stataCommand reg[ress]
-syn keyword stataCommand rename
+syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
 syn keyword stataCommand replace
 syn keyword stataCommand reshape
@@ -177,6 +179,7 @@ syn keyword stataCommand webuse
 syn keyword stataCommand which
 syn keyword stataCommand who
 syn keyword stataCommand window
+syn keyword stataCommand !
 
 " Literals
 syn match  stataQuote   /"/
