@@ -21,8 +21,17 @@ endif
 
 syntax case match
 
-" fold regions
-syn region stataFoldProg start=/prog def/ end=/end/ transparent fold keepend extend containedin=ALLBUT,@stataNoFold
+" fold region
+syn region stataProgFold
+    \ end="end"
+    \ matchgroup=stataCommand
+    \ start="pr\%[ogram] def\%[ine]"
+    \ transparent fold
+    \ keepend extend
+    \ containedin=ALLBUT,@stataComment
+    \ contains=ALL
+
+syn match stataCommand "pr\%[ogram] \(def\)\@!"
 
 " todo markers
 " taken from $VIMRUNTIME/syntax/python.vim 
@@ -33,6 +42,7 @@ syn keyword stataTodo		asdf
 " note that the triple slash continuing line comment comes free
 syn region stataStarComment  start=/^\s*\*/ end=/$/    contains=stataComment,stataTodo oneline
 syn region stataSlashComment start="\s//"   end=/$/    contains=stataComment,stataTodo oneline
+syn region stataSlashComment start="\s///"   end=/$/    contains=stataComment,stataTodo oneline containedin=ALL
 syn region stataSlashComment start="^//"    end=/$/    contains=stataComment,stataTodo oneline
 " comments - multiple line
 syn region stataComment      fold start="/\*"    end="\*/"  contains=stataComment,stataTodo
@@ -141,7 +151,8 @@ syn keyword stataCommand preserve
 syn keyword stataCommand print
 syn keyword stataCommand printer
 syn keyword stataCommand profiler
-syn keyword stataCommand pr[ogram]
+" syn keyword stataCommand prog
+" syn match stataCommand /prog/ oneline 
 syn keyword stataCommand q[uery]
 syn keyword stataCommand qui[etly]
 syn keyword stataCommand rcof
