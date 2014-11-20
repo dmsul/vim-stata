@@ -21,9 +21,13 @@ endif
 
 syntax case match
 
+" fold regions
+syn region stataFoldProg start=/prog def/ end=/end/ transparent fold keepend extend containedin=ALLBUT,@stataNoFold
+
 " todo markers
 " taken from $VIMRUNTIME/syntax/python.vim 
 syn keyword stataTodo		FIXME NOTE NOTES TODO XXX contained
+syn keyword stataTodo		asdf
 
 " comments - single line
 " note that the triple slash continuing line comment comes free
@@ -31,7 +35,7 @@ syn region stataStarComment  start=/^\s*\*/ end=/$/    contains=stataComment,sta
 syn region stataSlashComment start="\s//"   end=/$/    contains=stataComment,stataTodo oneline
 syn region stataSlashComment start="^//"    end=/$/    contains=stataComment,stataTodo oneline
 " comments - multiple line
-syn region stataComment      start="/\*"    end="\*/"  contains=stataComment,stataTodo
+syn region stataComment      fold start="/\*"    end="\*/"  contains=stataComment,stataTodo
 
 " global macros - simple case
 syn match  stataGlobal /\$\a\w*/
@@ -146,6 +150,7 @@ syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
 syn keyword stataCommand replace
 syn keyword stataCommand reshape
+syn keyword stataCommand restore
 syn keyword stataCommand ret[urn]
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcoll
@@ -184,7 +189,6 @@ syn keyword stataCommand webuse
 syn keyword stataCommand which
 syn keyword stataCommand who
 syn keyword stataCommand window
-syn keyword stataCommand !
 
 " Literals
 syn match  stataQuote   /"/
@@ -222,6 +226,7 @@ syn region stataFunc matchgroup=Function start=/\<log(/ end=/)/ contains=@stataF
 syn region stataFunc matchgroup=Function start=/\<log10(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<logit(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<max(/ end=/)/ contains=@stataFuncGroup
+syn region stataFunc matchgroup=Function start=/\<min(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<mod(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<reldif(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<round(/ end=/)/ contains=@stataFuncGroup
@@ -422,7 +427,7 @@ syn region stataFunc matchgroup=Function start=/\<vecdiag(/ end=/)/ contains=@st
 " catch errors caused by wrong parenthesis, braces and brackets
 syn region	stataParen	transparent start=/(/ end=/)/  contains=ALLBUT,@stataParenGroup,stataErrInBracket,stataErrInBrace
 syn region	stataBracket	transparent start=/\[/ end=/]/ contains=ALLBUT,@stataParenGroup,stataErrInParen,stataErrInBrace
-syn region	stataBrace	transparent start=/{/ end=/}/  contains=ALLBUT,@stataParenGroup,stataErrInParen,stataErrInBracket
+syn region	stataBrace	transparent fold start=/{/ end=/}/  contains=ALLBUT,@stataParenGroup,stataErrInParen,stataErrInBracket
 syn match	stataParenError	/[\])}]/
 syn match	stataBracketError	/]/
 syn match	stataBraceError	/}/
@@ -444,15 +449,25 @@ hi def link stataParenError	stataError
 hi def link stataSlashComment	stataComment
 hi def link stataStarComment	stataComment
 
+" PreProc
 hi def link stataCommand	Define
+" Comment 
 hi def link stataComment	Comment
+" Statement
 hi def link stataConditional	Conditional
+" Error
 hi def link stataError		Error
+" Function is identifier ("none"?)
 hi def link stataFunc		None
-hi def link stataMacro		Define
+" PreProc
+hi def link stataMacro		Identifier
+" Statement
 hi def link stataRepeat		Repeat
+" Special
 hi def link stataSpecial	SpecialChar
+" Constant
 hi def link stataString		String
+" Todo
 hi def link stataTodo		Todo
 
 let b:current_syntax = "stata"
