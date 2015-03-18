@@ -23,14 +23,15 @@ syntax case match
 
 " fold region
 syn region stataProgFold
-    \ end="end"
+    \ end="\<end\>"
     \ matchgroup=stataCommand
-    \ start="pr\%[ogram] def\%[ine]"
+    \ start="\<pr\%[ogram] def\%[ine]\>"
     \ transparent fold
     \ keepend extend
     \ containedin=ALLBUT,@stataComment
     \ contains=ALL
 
+" Use match since 'keyword' will override region match
 syn match stataCommand "pr\%[ogram] \(def\)\@!"
 
 " todo markers
@@ -45,7 +46,7 @@ syn region stataSlashComment start="\s//"   end=/$/    contains=stataComment,sta
 syn region stataSlashComment start="\s///"   end=/$/    contains=stataComment,stataTodo oneline containedin=ALL
 syn region stataSlashComment start="^//"    end=/$/    contains=stataComment,stataTodo oneline
 " comments - multiple line
-syn region stataComment      fold start="/\*"    end="\*/"  contains=stataComment,stataTodo
+syn region stataComment      start="/\*"    end="\*/"  contains=stataComment,stataTodo
 
 " global macros - simple case
 syn match  stataGlobal /\$\a\w*/
@@ -53,6 +54,9 @@ syn match  stataGlobal /\$\a\w*/
 syn region stataGlobal start=/\${/ end=/}/ oneline contains=@stataMacroGroup
 " local macros - general case
 syn region stataLocal  start=/`/ end=/'/   oneline contains=@stataMacroGroup
+" built-in macros
+syn keyword stataGlobal _n
+syn keyword stataGlobal _N
 
 " numeric formats
 syn match  stataFormat /%-\=\d\+\.\d\+[efg]c\=/
@@ -67,10 +71,32 @@ syn keyword stataRepeat      foreach
 syn keyword stataRepeat      forv[alues]
 syn keyword stataRepeat      while
 
+" I/O commands
+syn keyword stataIO clear
+syn keyword stataIO do
+syn keyword stataIO export
+syn keyword stataIO import
+syn keyword stataIO insheet
+syn keyword stataIO infile
+syn keyword stataIO infix
+syn keyword stataIO input
+syn keyword stataIO outfile
+syn keyword stataIO outreg2
+syn keyword stataIO outsheet
+syn keyword stataIO preserve
+syn keyword stataIO restore
+syn keyword stataIO run
+syn keyword stataIO save
+syn keyword stataIO set
+syn keyword stataIO shell
+syn keyword stataIO sysuse
+syn keyword stataIO use
+
 " Common programming commands
 syn keyword stataCommand about
 syn keyword stataCommand adopath
 syn keyword stataCommand adoupdate
+syn keyword stataCommand areg
 syn keyword stataCommand assert
 syn keyword stataCommand break
 syn keyword stataCommand by[sort]
@@ -80,6 +106,7 @@ syn keyword stataCommand chdir
 syn keyword stataCommand checksum
 syn keyword stataCommand class
 syn keyword stataCommand classutil
+" syn keyword stataCommand clear
 syn keyword stataCommand compress
 syn keyword stataCommand conf[irm]
 syn keyword stataCommand conren
@@ -92,7 +119,7 @@ syn keyword stataCommand d[escribe]
 syn keyword stataCommand dir
 syn keyword stataCommand discard
 syn keyword stataCommand di[splay]
-syn keyword stataCommand do
+" syn keyword stataCommand do
 syn keyword stataCommand doedit
 syn keyword stataCommand drop
 syn keyword stataCommand edit
@@ -113,10 +140,10 @@ syn keyword stataCommand gl[obal]
 syn keyword stataCommand help
 syn keyword stataCommand hexdump
 syn keyword stataCommand include
-syn keyword stataCommand infile
-syn keyword stataCommand infix
-syn keyword stataCommand input
-syn keyword stataCommand insheet
+" syn keyword stataCommand infile
+" syn keyword stataCommand infix
+" syn keyword stataCommand input
+" syn keyword stataCommand insheet
 syn keyword stataCommand joinby
 syn keyword stataCommand keep
 syn keyword stataCommand la[bel]
@@ -139,21 +166,19 @@ syn keyword stataCommand nobreak
 syn keyword stataCommand n[oisily]
 syn keyword stataCommand note[s]
 syn keyword stataCommand numlist
-syn keyword stataCommand outfile
-syn keyword stataCommand outsheet
+" syn keyword stataCommand outfile
+" syn keyword stataCommand outsheet
 syn keyword stataCommand _parse
 syn keyword stataCommand pause
 syn keyword stataCommand plugin
 syn keyword stataCommand post
 syn keyword stataCommand postclose
 syn keyword stataCommand postfile
-syn keyword stataCommand preserve
+" syn keyword stataCommand preserve
 syn keyword stataCommand print
 syn keyword stataCommand printer
 syn keyword stataCommand profiler
-" syn keyword stataCommand prog
-" syn match stataCommand /prog/ oneline 
-syn keyword stataCommand q[uery]
+syn keyword stataCommand query]
 syn keyword stataCommand qui[etly]
 syn keyword stataCommand rcof
 syn keyword stataCommand reg[ress]
@@ -161,19 +186,20 @@ syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
 syn keyword stataCommand replace
 syn keyword stataCommand reshape
-syn keyword stataCommand restore
+" syn keyword stataCommand restore
 syn keyword stataCommand ret[urn]
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcollright
 syn keyword stataCommand rmdir
 syn keyword stataCommand _robust
-syn keyword stataCommand save
+" syn keyword stataCommand run
+" syn keyword stataCommand save
 syn keyword stataCommand sca[lar]
 syn keyword stataCommand search
 syn keyword stataCommand serset
-syn keyword stataCommand set
-syn keyword stataCommand shell
+" syn keyword stataCommand set
+" syn keyword stataCommand shell
 syn keyword stataCommand sleep
 syn keyword stataCommand sort
 syn keyword stataCommand split
@@ -183,14 +209,14 @@ syn keyword stataCommand su[mmarize]
 syn keyword stataCommand syntax
 syn keyword stataCommand sysdescribe
 syn keyword stataCommand sysdir
-syn keyword stataCommand sysuse
+" syn keyword stataCommand sysuse
 syn keyword stataCommand token[ize]
 syn keyword stataCommand translate
 syn keyword stataCommand type
 syn keyword stataCommand unab
 syn keyword stataCommand unabcmd
 syn keyword stataCommand update
-syn keyword stataCommand use
+" syn keyword stataCommand use
 syn keyword stataCommand vers[ion]
 syn keyword stataCommand view
 syn keyword stataCommand viewsource
@@ -200,6 +226,7 @@ syn keyword stataCommand webuse
 syn keyword stataCommand which
 syn keyword stataCommand who
 syn keyword stataCommand window
+syn keyword stataCommand xtreg
 
 " Literals
 syn match  stataQuote   /"/
@@ -438,13 +465,23 @@ syn region stataFunc matchgroup=Function start=/\<vecdiag(/ end=/)/ contains=@st
 " catch errors caused by wrong parenthesis, braces and brackets
 syn region	stataParen	transparent start=/(/ end=/)/  contains=ALLBUT,@stataParenGroup,stataErrInBracket,stataErrInBrace
 syn region	stataBracket	transparent start=/\[/ end=/]/ contains=ALLBUT,@stataParenGroup,stataErrInParen,stataErrInBrace
-syn region	stataBrace	transparent fold start=/{/ end=/}/  contains=ALLBUT,@stataParenGroup,stataErrInParen,stataErrInBracket
-syn match	stataParenError	/[\])}]/
-syn match	stataBracketError	/]/
-syn match	stataBraceError	/}/
-syn match	stataErrInParen	contained /[\]}]/
-syn match	stataErrInBracket	contained /[)}]/
-syn match	stataErrInBrace	contained /[)\]]/
+syn region	stataBrace	transparent keepend start=/{/ end=/}/  contains=ALLBUT,stataErrInParen,stataErrInBracket
+" syn match	stataParenError                 /[\])}]/
+" syn match	stataBracketError	        /]/
+" syn match	stataBraceError	                /}/
+" syn match	stataErrInParen	        contained /[\]}]/
+" syn match	stataErrInBracket	contained /[)}]/
+" syn match	stataErrInBrace	        contained /[)\]]/
+
+" Numbers (taken from python.vim)
+  syn match   stataNumber	"\<0[oO]\=\o\+[Ll]\=\>"
+  syn match   stataNumber	"\<0[xX]\x\+[Ll]\=\>"
+  syn match   stataNumber	"\<0[bB][01]\+[Ll]\=\>"
+  syn match   stataNumber	"\<\%([1-9]\d*\|0\)[Ll]\=\>"
+  syn match   stataNumber	"\<\d\+[jJ]\>"
+  syn match   stataNumber	"\<\d\+[eE][+-]\=\d\+[jJ]\=\>"
+  syn match   stataNumber       "\<\d\+\.\%([eE][+-]\=\d\+\)\=[jJ]\=\%(\W\|$\)\@="
+  syn match   stataNumber       "\%(^\|\W\)\@<=\d*\.\d\+\%([eE][+-]\=\d\+\)\=[jJ]\=\>"
 
 " assign highlight groups
 hi def link stataBraceError	stataError
@@ -474,12 +511,16 @@ hi def link stataFunc		None
 hi def link stataMacro		Identifier
 " Statement
 hi def link stataRepeat		Repeat
-" Special
-hi def link stataSpecial	SpecialChar
+" Special (empty?)
+hi def link stataSpecial     	SpecialChar
+" Major/IO Commands
+hi def link stataIO     	SpecialChar
 " Constant
 hi def link stataString		String
 " Todo
 hi def link stataTodo		Todo
+" Numbers
+hi def link stataNumber         Number
 
 let b:current_syntax = "stata"
 
