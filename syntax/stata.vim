@@ -108,6 +108,7 @@ syn keyword stataIO webuse
 " Special commands (data alteration, macros)
 syn keyword stataSpecial drop
 syn keyword stataSpecial gl[obal]
+syn keyword stataSpecial force
 syn keyword stataSpecial keep
 syn keyword stataSpecial loc[al]
 syn keyword stataSpecial rep[lace]
@@ -132,6 +133,7 @@ syn keyword stataCommand cou[nt]
 syn keyword stataCommand cscript
 syn keyword stataCommand cscript_log
 syn keyword stataCommand d[escribe]
+syn keyword stataCommand destring
 syn keyword stataCommand dir
 syn keyword stataCommand discard
 syn keyword stataCommand di[splay]
@@ -141,6 +143,7 @@ syn keyword stataCommand egen
 syn keyword stataCommand end
 syn keyword stataCommand eret[urn]
 syn keyword stataCommand err[or]
+syn keyword stataCommand est[imates] sto[re]
 syn keyword stataCommand expand
 syn keyword stataCommand expandcl
 syn keyword stataCommand file
@@ -180,6 +183,7 @@ syn keyword stataCommand profiler
 syn keyword stataCommand [query]
 syn keyword stataCommand qui[etly]
 syn keyword stataCommand rcof
+syn keyword stataCommand recast
 syn keyword stataCommand reg[ress]
 syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
@@ -202,6 +206,7 @@ syn keyword stataCommand syntax
 syn keyword stataCommand sysdescribe
 syn keyword stataCommand tab[ulate]
 syn keyword stataCommand token[ize]
+syn keyword stataCommand tostring
 syn keyword stataCommand translate
 syn keyword stataCommand type
 syn keyword stataCommand unab
@@ -216,6 +221,7 @@ syn keyword stataCommand which
 syn keyword stataCommand who
 syn keyword stataCommand window
 syn keyword stataCommand xtreg
+syn keyword stataCommand xtset
 
 " Literals
 syn match  stataQuote   /"/
