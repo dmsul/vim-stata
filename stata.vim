@@ -122,6 +122,7 @@ syn keyword stataCommand di[splay]
 " syn keyword stataCommand do
 syn keyword stataCommand doedit
 syn keyword stataCommand drop
+syn keyword stataCommand duplicates
 syn keyword stataCommand edit
 syn keyword stataCommand egen
 syn keyword stataCommand end
@@ -184,7 +185,7 @@ syn keyword stataCommand rcof
 syn keyword stataCommand reg[ress]
 syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
-syn keyword stataCommand replace
+syn keyword stataCommand rep[lace]
 syn keyword stataCommand reshape
 " syn keyword stataCommand restore
 syn keyword stataCommand ret[urn]
@@ -210,6 +211,7 @@ syn keyword stataCommand syntax
 syn keyword stataCommand sysdescribe
 syn keyword stataCommand sysdir
 " syn keyword stataCommand sysuse
+syn keyword stataCommand tab[ulate]
 syn keyword stataCommand token[ize]
 syn keyword stataCommand translate
 syn keyword stataCommand type
