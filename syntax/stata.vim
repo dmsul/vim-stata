@@ -72,25 +72,45 @@ syn keyword stataRepeat      forv[alues]
 syn keyword stataRepeat      while
 
 " I/O commands
+syn keyword stataIO cd
+syn keyword stataIO chdir
 syn keyword stataIO clear
 syn keyword stataIO do
+" XXX the # screws this one up
+syn keyword stataIO #delimit
+syn keyword stataIO edit
+syn keyword stataIO erase
+syn keyword stataIO ex[it]
 syn keyword stataIO export
 syn keyword stataIO import
 syn keyword stataIO insheet
 syn keyword stataIO infile
 syn keyword stataIO infix
 syn keyword stataIO input
+syn keyword stataIO joinby
+syn keyword stataIO merge
+syn keyword stataIO mkdir
 syn keyword stataIO outfile
 syn keyword stataIO outreg2
 syn keyword stataIO outsheet
 syn keyword stataIO preserve
 syn keyword stataIO restore
+syn keyword stataIO rmdir
 syn keyword stataIO run
 syn keyword stataIO save
 syn keyword stataIO set
 syn keyword stataIO shell
+syn keyword stataIO sysdir
 syn keyword stataIO sysuse
 syn keyword stataIO use
+syn keyword stataIO webuse
+
+" Special commands (data alteration, macros)
+syn keyword stataSpecial drop
+syn keyword stataSpecial gl[obal]
+syn keyword stataSpecial keep
+syn keyword stataSpecial loc[al]
+syn keyword stataSpecial rep[lace]
 
 " Common programming commands
 syn keyword stataCommand about
@@ -101,8 +121,6 @@ syn keyword stataCommand assert
 syn keyword stataCommand break
 syn keyword stataCommand by[sort]
 syn keyword stataCommand cap[ture]
-syn keyword stataCommand cd
-syn keyword stataCommand chdir
 syn keyword stataCommand checksum
 syn keyword stataCommand class
 syn keyword stataCommand classutil
@@ -113,21 +131,16 @@ syn keyword stataCommand continue
 syn keyword stataCommand cou[nt]
 syn keyword stataCommand cscript
 syn keyword stataCommand cscript_log
-syn keyword stataCommand #delimit
 syn keyword stataCommand d[escribe]
 syn keyword stataCommand dir
 syn keyword stataCommand discard
 syn keyword stataCommand di[splay]
 syn keyword stataCommand doedit
-syn keyword stataCommand drop
 syn keyword stataCommand duplicates
-syn keyword stataCommand edit
 syn keyword stataCommand egen
 syn keyword stataCommand end
-syn keyword stataCommand erase
 syn keyword stataCommand eret[urn]
 syn keyword stataCommand err[or]
-syn keyword stataCommand ex[it]
 syn keyword stataCommand expand
 syn keyword stataCommand expandcl
 syn keyword stataCommand file
@@ -135,16 +148,12 @@ syn keyword stataCommand findfile
 syn keyword stataCommand format
 syn keyword stataCommand g[enerate]
 syn keyword stataCommand gettoken
-syn keyword stataCommand gl[obal]
 syn keyword stataCommand help
 syn keyword stataCommand hexdump
 syn keyword stataCommand include
-syn keyword stataCommand joinby
-syn keyword stataCommand keep
 syn keyword stataCommand la[bel]
 syn keyword stataCommand levelsof
 syn keyword stataCommand list
-syn keyword stataCommand loc[al]
 syn keyword stataCommand log
 syn keyword stataCommand ma[cro]
 syn keyword stataCommand mark
@@ -153,8 +162,6 @@ syn keyword stataCommand marksample
 syn keyword stataCommand mata
 syn keyword stataCommand matrix
 syn keyword stataCommand memory
-syn keyword stataCommand merge
-syn keyword stataCommand mkdir
 syn keyword stataCommand more
 syn keyword stataCommand net
 syn keyword stataCommand nobreak
@@ -170,19 +177,17 @@ syn keyword stataCommand postfile
 syn keyword stataCommand print
 syn keyword stataCommand printer
 syn keyword stataCommand profiler
-syn keyword stataCommand query]
+syn keyword stataCommand [query]
 syn keyword stataCommand qui[etly]
 syn keyword stataCommand rcof
 syn keyword stataCommand reg[ress]
 syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
-syn keyword stataCommand rep[lace]
 syn keyword stataCommand reshape
 syn keyword stataCommand ret[urn]
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcollright
-syn keyword stataCommand rmdir
 syn keyword stataCommand _robust
 syn keyword stataCommand sca[lar]
 syn keyword stataCommand search
@@ -195,7 +200,6 @@ syn keyword stataCommand ssc
 syn keyword stataCommand su[mmarize]
 syn keyword stataCommand syntax
 syn keyword stataCommand sysdescribe
-syn keyword stataCommand sysdir
 syn keyword stataCommand tab[ulate]
 syn keyword stataCommand token[ize]
 syn keyword stataCommand translate
@@ -208,7 +212,6 @@ syn keyword stataCommand view
 syn keyword stataCommand viewsource
 syn keyword stataCommand webdescribe
 syn keyword stataCommand webseek
-syn keyword stataCommand webuse
 syn keyword stataCommand which
 syn keyword stataCommand who
 syn keyword stataCommand window
