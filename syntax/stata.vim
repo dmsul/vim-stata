@@ -106,7 +106,6 @@ syn keyword stataCommand chdir
 syn keyword stataCommand checksum
 syn keyword stataCommand class
 syn keyword stataCommand classutil
-" syn keyword stataCommand clear
 syn keyword stataCommand compress
 syn keyword stataCommand conf[irm]
 syn keyword stataCommand conren
@@ -119,7 +118,6 @@ syn keyword stataCommand d[escribe]
 syn keyword stataCommand dir
 syn keyword stataCommand discard
 syn keyword stataCommand di[splay]
-" syn keyword stataCommand do
 syn keyword stataCommand doedit
 syn keyword stataCommand drop
 syn keyword stataCommand duplicates
@@ -141,10 +139,6 @@ syn keyword stataCommand gl[obal]
 syn keyword stataCommand help
 syn keyword stataCommand hexdump
 syn keyword stataCommand include
-" syn keyword stataCommand infile
-" syn keyword stataCommand infix
-" syn keyword stataCommand input
-" syn keyword stataCommand insheet
 syn keyword stataCommand joinby
 syn keyword stataCommand keep
 syn keyword stataCommand la[bel]
@@ -167,15 +161,12 @@ syn keyword stataCommand nobreak
 syn keyword stataCommand n[oisily]
 syn keyword stataCommand note[s]
 syn keyword stataCommand numlist
-" syn keyword stataCommand outfile
-" syn keyword stataCommand outsheet
 syn keyword stataCommand _parse
 syn keyword stataCommand pause
 syn keyword stataCommand plugin
 syn keyword stataCommand post
 syn keyword stataCommand postclose
 syn keyword stataCommand postfile
-" syn keyword stataCommand preserve
 syn keyword stataCommand print
 syn keyword stataCommand printer
 syn keyword stataCommand profiler
@@ -187,20 +178,15 @@ syn keyword stataCommand ren[ame]
 syn keyword stataCommand repeat
 syn keyword stataCommand rep[lace]
 syn keyword stataCommand reshape
-" syn keyword stataCommand restore
 syn keyword stataCommand ret[urn]
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcoll
 syn keyword stataCommand _rmcollright
 syn keyword stataCommand rmdir
 syn keyword stataCommand _robust
-" syn keyword stataCommand run
-" syn keyword stataCommand save
 syn keyword stataCommand sca[lar]
 syn keyword stataCommand search
 syn keyword stataCommand serset
-" syn keyword stataCommand set
-" syn keyword stataCommand shell
 syn keyword stataCommand sleep
 syn keyword stataCommand sort
 syn keyword stataCommand split
@@ -210,7 +196,6 @@ syn keyword stataCommand su[mmarize]
 syn keyword stataCommand syntax
 syn keyword stataCommand sysdescribe
 syn keyword stataCommand sysdir
-" syn keyword stataCommand sysuse
 syn keyword stataCommand tab[ulate]
 syn keyword stataCommand token[ize]
 syn keyword stataCommand translate
@@ -218,7 +203,6 @@ syn keyword stataCommand type
 syn keyword stataCommand unab
 syn keyword stataCommand unabcmd
 syn keyword stataCommand update
-" syn keyword stataCommand use
 syn keyword stataCommand vers[ion]
 syn keyword stataCommand view
 syn keyword stataCommand viewsource
