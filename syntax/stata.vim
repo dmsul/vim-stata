@@ -72,6 +72,7 @@ syn keyword stataRepeat      forv[alues]
 syn keyword stataRepeat      while
 
 " I/O commands
+syn keyword stataIO append
 syn keyword stataIO cd
 syn keyword stataIO chdir
 syn keyword stataIO clear
