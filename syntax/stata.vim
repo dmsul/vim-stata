@@ -235,6 +235,8 @@ syn cluster stataMacroGroup contains=stataGlobal,stataLocal
 syn cluster stataParenGroup contains=stataParenError,stataBracketError,stataBraceError,stataSpecial,stataFormat
 
 " Stata functions
+" egen
+syn region stataFunc matchgroup=Function start=/\<rowmean(/ end=/)/ contains=@stataFuncGroup
 " Math
 syn region stataFunc matchgroup=Function start=/\<abs(/ end=/)/ contains=@stataFuncGroup
 syn region stataFunc matchgroup=Function start=/\<acos(/ end=/)/ contains=@stataFuncGroup
